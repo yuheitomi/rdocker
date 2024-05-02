@@ -1,0 +1,7 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - docker build . -t yuheitomi/rocker-tidyverse-jp:4.4
+  
