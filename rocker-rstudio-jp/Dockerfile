@@ -25,4 +25,4 @@ RUN echo "copilot-enabled=1\\n" >> /etc/rstudio/rsession.conf
 
 # Create directories for R and RStudio in advance and change the owner to rstudio to 
 # avoid permission errors when mounting the volume.
-RUN su -c "mkdir -p /home/rstudio/{.cache/R,.config,.local/share}" rstudio
+RUN su -c "mkdir -p /home/rstudio/{workspace,.cache/R,.config,.local/share}" rstudio
