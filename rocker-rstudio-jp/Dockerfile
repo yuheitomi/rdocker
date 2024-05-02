@@ -1,8 +1,8 @@
 FROM rocker/rstudio:4.4
 
 RUN \
-    --mount=type=cache,target=/var/lib/apt/lists \
-    --mount=type=cache,target=/var/cache/apt/archives \ 
+    # --mount=type=cache,target=/var/lib/apt/lists \
+    # --mount=type=cache,target=/var/cache/apt/archives \ 
     apt-get update && apt-get install -y \
     openssh-client \
     fonts-ipaexfont \

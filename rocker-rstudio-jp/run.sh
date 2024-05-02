@@ -5,6 +5,8 @@ if [ ! -d workspace ]; then
     mkdir workspace
 fi
 
+docker pull yuheitomi/rocker-rstudio-jp:latest
+
 docker run \
     -d \
     --rm \
