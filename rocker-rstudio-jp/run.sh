@@ -18,6 +18,7 @@ docker run \
     -e RENV_CONFIG_PAK_ENABLED=TRUE \
     -e RENV_PATHS_ROOT=/home/rstudio/.cache/R/renv \
     --mount type=bind,source=./workspace,target=/home/rstudio/workspace \
+    --mount type=bind,source=./utils,target=/home/rstudio/utils \
     --mount type=bind,source=$HOME/.cache/R/renv,target=/home/rstudio/.cache/R/renv \
     --mount type=bind,source=$HOME/.cache/R/pkgcache,target=/home/rstudio/.cache/R/pkgcache \
     --mount type=bind,source=$HOME/.cache/rstudio-server,target=/home/rstudio/.cache/rstudio \
