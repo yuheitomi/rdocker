@@ -1,0 +1,21 @@
+version: '3'
+
+env:
+  IMAGE_NAME_HUB: yuheitomi/rocker-rstudio-jp:latest
+  IMAGE_NAME_LOCAL: rstudio-local
+  CONTAINER_NAME: rocker-rstudio
+
+tasks:
+  up-hub:
+    env:
+      IMAGE_NAME: '{{.IMAGE_NAME_HUB}}'
+    cmds:
+      - docker compose up -d
+    desc: Start the Docker container image on Docker Hub in detached mode
+
+  up-local:
+    env:
+      IMAGE_NAME: '{{.IMAGE_NAME_LOCAL}}'
+    cmds:
+      - docker compose up -d
+    desc: Start the local Docker containers image in detached mode
