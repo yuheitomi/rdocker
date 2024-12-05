@@ -1,23 +1,26 @@
 services:
-    rstudio:
-        image: ${IMAGE_NAME:-yuheitomi/rocker-rstudio-jp:latest}
-        container_name: ${CONTAINER_NAME:-rocker-rstudio-jp}
-        ports:
-            - "8787:8787"
-        environment:
-            - LC_ALL=en_US.UTF-8
-            - TZ=Asia/Tokyo
-            - ROOT=true
-            - PASSWORD=password
-            - DISABLE_AUTH=true
-            - RENV_CONFIG_PAK_ENABLED=TRUE
-            - RENV_PATHS_ROOT=/home/rstudio/.cache/R/renv
-        volumes:
-            - ./workspace:/home/rstudio/workspace
-            - ./utils:/home/rstudio/utils
-            - $HOME/.cache/R/renv:/home/rstudio/.cache/R/renv
-            - $HOME/.cache/R/pkgcache:/home/rstudio/.cache/R/pkgcache
-            - $HOME/.cache/rstudio-server:/home/rstudio/.cache/rstudio
-            - $HOME/.config/rstudio-server:/home/rstudio/.config/rstudio
-            - $HOME/.config/github-copilot:/home/rstudio/.config/github-copilot
-        restart: unless-stopped
+  rstudio:
+    image: ${IMAGE_NAME:-yuheitomi/rocker-rstudio-jp:latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${CONTAINER_NAME:-rocker-rstudio-jp}
+    ports:
+      - "8787:8787"
+    environment:
+      - LC_ALL=en_US.UTF-8
+      - TZ=Asia/Tokyo
+      - ROOT=true
+      - PASSWORD=password
+      - DISABLE_AUTH=true
+      - RENV_CONFIG_PAK_ENABLED=TRUE
+      - RENV_PATHS_ROOT=/home/rstudio/.cache/R/renv
+    volumes:
+      - ./workspace:/home/rstudio/workspace
+      - ./utils:/home/rstudio/utils
+      - $HOME/.cache/R/renv:/home/rstudio/.cache/R/renv
+      - $HOME/.cache/R/pkgcache:/home/rstudio/.cache/R/pkgcache
+      - $HOME/.cache/rstudio-server:/home/rstudio/.cache/rstudio
+      - $HOME/.config/rstudio-server:/home/rstudio/.config/rstudio
+      - $HOME/.config/github-copilot:/home/rstudio/.config/github-copilot
+    restart: unless-stopped
